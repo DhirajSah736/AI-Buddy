@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sparkle Animation Styles */
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleFloat linear infinite;
+  opacity: 0;
+}
+
+.sparkle::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.3) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkleGlow 2s ease-in-out infinite alternate;
+}
+
+.sparkle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  transform: translate(-50%, -50%);
+  animation: sparkleBeam 3s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(0) rotate(0deg) scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(10px) rotate(45deg) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10vh) translateX(-10px) rotate(315deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) translateX(0) rotate(360deg) scale(0);
+  }
+}
+
+@keyframes sparkleGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes sparkleBeam {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scaleX(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+  }
+}
+
+/* Additional sparkle variants for variety */
+.sparkle:nth-child(3n) {
+  background: radial-gradient(circle, #FFA500 0%, #FFD700 50%, transparent 70%);
+  animation-duration: 4s;
+}
+
+.sparkle:nth-child(4n) {
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #FFFF00 0%, #FFD700 50%, transparent 70%);
+  animation-duration: 6s;
+}
+
+.sparkle:nth-child(5n) {
+  width: 5px;
+  height: 5px;
+  background: radial-gradient(circle, #FFD700 0%, #FF8C00 50%, transparent 70%);
+  animation-duration: 3s;
+}
+
+/* Ensure sparkles don't interfere with interactions */
+.sparkle-container {
+  z-index: 0;
+}
+
+/* Smooth scrolling and performance optimizations */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
