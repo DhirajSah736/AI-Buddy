@@ -166,7 +166,7 @@ function App() {
               <span className="text-gray-400 text-sm whitespace-nowrap">© 2025 AI Buddy-Conversational AI.</span>
             </div>
             <div className="text-gray-500 text-sm text-center sm:text-right">
-              Designed and developed by Dhiraj Sah.
+              Designed and developed by <span className='text-yellow-500'>Dhiraj Sah</span>.
             </div>
           </div>
         </div>
